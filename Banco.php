@@ -99,7 +99,7 @@ while (true) {
                }else{
                 $usuarios[$usando]["saldo"]-=$retirar;
                 echo "Dinero retirado con exito \n";
-                $usuarios[$usando]["retiros"]=[
+                $usuarios[$usando]["retiros"][]=[
                   "cuenta"=>$usuarios[$usando]["numero_cuenta"],
                   "valor_retirado"=>$retirar,
 		  "fecha_retiro"=>date("d-m-y")
@@ -113,15 +113,15 @@ while (true) {
             if(count($usuarios[$usando]["retiros"])==0){
                 echo "No tiene registros de los retiros \n";
             }else{
-		$cantidad_retiros=0; 
-		$total_retirado=0; 
-		foreach($usuarios[$usando]["retiros"] as $clave=>$valor){
+		$cantidad_retiros=0;
+		$total_retirado=0;
+		foreach($usuarios[$usando]["retiros"] as $retiro){
                   $cantidad_retiros+=1;
-		  $total_retirado+=$valor["valor_retirado"];
-		  echo "Valor del retiro: " . $valor["valor_retirado"];
+		  $total_retirado+=$retiro["valor_retirado"];
+		  echo "Valor del retiro: " . $retiro["valor_retirado"] . "\n";
              }
-		echo "cantidad de retiros: $cantidad_retiros";
-             echo "total retirado: $total_retirado";
+		echo "cantidad de retiros: $cantidad_retiros \n";
+             echo "total retirado: $total_retirado \n";
              echo "===================\n";
 
 	    }
